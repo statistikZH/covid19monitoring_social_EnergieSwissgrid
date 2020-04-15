@@ -1,0 +1,57 @@
+---
+title: "covid19_soc_swissix"
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(statR)
+
+# Number formatting
+options(scipen = 1000000)
+options(digits = 6)
+```
+
+
+# Data Import
+
+```{r data import}
+data <- read_csv("P:/KK_Temp/Social_SwissgridEnergie.csv")
+
+```
+
+## Visualization 1 - Daily volume
+
+```{r visualisation days, fig.height=8, fig.width=12, echo=FALSE}
+ggplot(data, aes(x=date, y=value)) + geom_point(color = "#FF6666", alpha = 0.7) +
+  geom_path(color = "#FF6666", alpha = 0.7) +
+  scale_x_date(date_labels = "%a\n%d. %m", date_breaks = "1 week") +
+  labs(title = "Summe endverbrauchte Energie CH | 2020-01-01.-2020-02-29",
+       caption = "Quelle: Swissgrid",
+       x = NULL,
+       y = "GWh") +
+  theme_stat() +
+  theme(panel.grid.major.x = element_line(linetype = "solid", size = 0.25, color = "grey")) +
+  ggsave("./daily.png")
+```
+
+## Visualization 2 - Weekly Volume
+
+```{r visualisation weeks, fig.height=8, fig.width=12}
+# Data prep
+data_wk <- data %>% 
+  mutate(week = format(date, '%Y-%V')) %>% # MO - SO
+  group_by(week) %>%
+  summarise(weekly_total = sum(value))
+
+ggplot(data_wk, aes(week)) + 
+  geom_bar(aes(weight = weekly_total), fill = "#FF6666")+
+  labs(title = "Summe endverbrauchte Energie CH | 2020-01-01.-2020-02-29",
+       caption = "Quelle: Swissgrid",
+       x = NULL,
+       y = "GWh") +
+  theme_stat() +
+  ggsave("./weekly.png")
+```
+
