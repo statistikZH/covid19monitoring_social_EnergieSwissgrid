@@ -50,7 +50,7 @@ dat_prep <- dat %>%
         'source' := "Swissgrid",
         'update' := "t\u00e4glich",
         'public' := "ja",
-        'description' := "?"
+        'description' := "https://github.com/statistikZH/covid19monitoring_social_EnergieSwissgrid"
     ) %>%
   filter(!(is.na(value))) %>%
   filter(date != "2019-01-01") %>% 
