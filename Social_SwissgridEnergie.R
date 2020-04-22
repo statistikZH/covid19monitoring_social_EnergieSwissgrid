@@ -10,7 +10,7 @@ options(digits = 6)
 
 # xlsx:
 # 1: Herunterladen via https://www.swissgrid.ch/en/home/operation/grid-data.html
-# 2: Hier ablegen: L:\STAT\03_AS\03_Publikationen\20_monitoring_covid\swissgrid
+# 2: Hier ablegen: L:/STAT/03_AS/03_Publikationen/20_monitoring_covidIswissgrid
 
 # copy/paste xlsx zu csv: dat_2019.csv & dat_2020.csv
 # 1. Navigiere zu Tab: Zeitreihen0h15
