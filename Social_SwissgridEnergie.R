@@ -8,15 +8,18 @@ library(dplyr) # Version = 0.8.3
 options(scipen = 1000000)
 options(digits = 6)
 
-# copy/paste xlsx zu csv: 
+# xlsx:
+# 1: Herunterladen via https://www.swissgrid.ch/en/home/operation/grid-data.html
+# 2: Hier ablegen: L:\STAT\03_AS\03_Publikationen\20_monitoring_covid\swissgrid
+
+# copy/paste xlsx zu csv: dat_2019.csv & dat_2020.csv
 # 1. Navigiere zu Tab: Zeitreihen0h15
 # 2. Kopiere ganze 
 # - **Spalte A** "Zeitstempfel 
 # - **Spalte B** "Summe endverbrauchte Energie Regelblock Schweiz\nTotal energy consumed by end users in the Swiss controlblock"
 # 3. lösche die ersten zwei Zeilen im csv
 # 4. Lösche trailing blank line
-# => Resultierender Datensatz: dat_2019.csv & dat_2020.csv
-  
+
 dat_2019 <- read.csv("./dat_2019.csv", header=T, sep="\t", stringsAsFactors=FALSE, encoding="UTF-8")
 dat_2020 <- read.csv("./dat_2020.csv", header=T, sep="\t", stringsAsFactors=FALSE, encoding="UTF-8")
 
