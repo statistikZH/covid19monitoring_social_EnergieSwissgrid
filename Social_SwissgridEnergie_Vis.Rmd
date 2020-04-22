@@ -53,7 +53,8 @@ ggplot(data, aes(x=date, y=value)) + geom_point(color = "#FF6666", alpha = 0.7) 
 data_wk <- data %>% 
   mutate(week = format(date, '%Y-%V')) %>% # MO - SO
   group_by(week) %>%
-  summarise(weekly_total = sum(value))
+  summarise(weekly_total = sum(value)) %>%
+  filter(week != "2020-14") # check
 
 ggplot(data_wk, aes(week)) + 
   geom_bar(aes(weight = weekly_total), fill = "#FF6666")+

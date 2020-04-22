@@ -41,7 +41,7 @@ dat_prep <- dat %>%
   summarise(value=sum(as.numeric(gsub(",", ".", value)))) %>% 
   transmute(
         'date' := as.POSIXct(.data$date_day, format="%d.%m.%Y"),
-        'value' :=  .data$value, #.data$value/1000000, #check
+        'value' :=  .data$value/1000000, #check: remove /1000000
         'topic' := "Soziales",
         'variable_short' := "sum_endverbrauchteenergie_ch",
         'variable_long' := "Summe endverbrauchte Energie Regelblock Schweiz",
