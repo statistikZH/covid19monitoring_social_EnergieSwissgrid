@@ -1,5 +1,5 @@
 ---
-title: "covid19_soc_swissix"
+title: "Social_SwissgridEnergie_Vis.Rmd"
 ---
 
 https://www.statworx.com/ch/blog/customizing-time-and-date-scales-in-ggplot2/
