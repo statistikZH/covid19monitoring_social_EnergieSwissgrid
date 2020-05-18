@@ -32,7 +32,7 @@ data <- read_csv("./Social_SwissgridEnergie.csv")
 ggplot(data, aes(x=date, y=value)) + geom_point(color = "#FF6666", alpha = 0.7) +
   geom_path(color = "#FF6666", alpha = 0.7) +
   scale_x_date(date_labels = "%a\n%d. %m", date_breaks = "1 week") +
-  labs(title = "Summe endverbrauchte Energie CH | 2020-01-01.-2020-02-29",
+  labs(title = "Summe endverbrauchte Energie CH",
        caption = "Quelle: Swissgrid",
        x = NULL,
        y = "GWh") +
@@ -58,7 +58,7 @@ data_wk <- data %>%
 
 ggplot(data_wk, aes(week)) + 
   geom_bar(aes(weight = weekly_total), fill = "#FF6666")+
-  labs(title = "Summe endverbrauchte Energie CH | 2020-01-01.-2020-02-29",
+  labs(title = "Summe endverbrauchte Energie CH",
        caption = "Quelle: Swissgrid",
        x = NULL,
        y = "GWh") +

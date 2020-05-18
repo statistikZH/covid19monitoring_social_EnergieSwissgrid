@@ -13,11 +13,12 @@ options(digits = 6)
 
 # copy/paste xlsx zu csv: dat_2019.csv & dat_2020.csv
 # 1. Navigiere zu Tab: Zeitreihen0h15
-# 2. Kopiere ganze 
+# 2. Kopiere ganze Spalte ... für die ein Wert in kwh enthalten ist
 # - **Spalte A** "Zeitstempfel 
 # - **Spalte B** "Summe endverbrauchte Energie Regelblock Schweiz\nTotal energy consumed by end users in the Swiss controlblock"
-# 3. lösche die ersten zwei Zeilen im csv
+# 3. Lösche die ersten zwei Zeilen im csv
 # 4. Lösche trailing blank line
+# 5. check sum with xlsx für ein paar Tage im letzten Monat
 
 dat_2019 <- read.csv("./dat_2019.csv", header=T, sep="\t", stringsAsFactors=FALSE, encoding="UTF-8")
 dat_2020 <- read.csv("./dat_2020.csv", header=T, sep="\t", stringsAsFactors=FALSE, encoding="UTF-8")
@@ -53,7 +54,7 @@ dat_prep <- dat %>%
     ) %>%
   filter(!(is.na(value))) %>%
   filter(date != "2019-01-01") %>% 
-  filter(date != "2020-04-01") %>% 
+  filter(date != "2020-05-01") %>% 
   arrange(date)
   
 write.table(dat_prep, "./Social_SwissgridEnergie.csv", sep=",", fileEncoding="UTF-8", row.names = F)
